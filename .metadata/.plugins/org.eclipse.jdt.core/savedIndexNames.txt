@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+/home/moises/Dev/loo/project-aula-part3-spark/.metadata/.plugins/org.eclipse.jdt.core
+1865797976.index
