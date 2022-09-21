@@ -12,10 +12,10 @@
 
 
 <div class="student-details">
-	
-        <span> ID: $student.getId() </span> 
+
+        <span> ID: $student.getId() </span>
         <span> NAME: $student.getName() </span>
-    
+
 </div>
 
 

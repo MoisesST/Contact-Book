@@ -1,4 +1,5 @@
 <HTML>
+
 <HEAD>
 
 	<link rel='stylesheet' href='/global.css' />
@@ -6,24 +7,20 @@
 </HEAD>
 
 <BODY>
-<h1>ola</h1>
+<h1>Contact List</h1>
 
+#foreach($contact in $contacts)
 
-#foreach($student in $allstudents)
-
-
-	<a href="/student/$student.getId()" class="List-item">
-        $student.getId() - $student.getName() 
-    </a>
-
+	<a href="/contact/$contact.getId()" class="List-item">
+      <strong> Id: </strong> $contact.getId() -
+      <strong> Name: </strong> $contact.getName() -
+      <strong> Phone: </strong> $contact.getPhone()
+  </a>
+  <br>
 
 #end
-	
 
-	<a href="/students/new"  class="create-student">CREATE NEW STUDENT</a>
-
-
-
+	<a href="/contacts"  class="create-student">CREATE NEW Contact</a>
 
 </BODY>
 

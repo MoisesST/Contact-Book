@@ -43,7 +43,7 @@ a {
     background-color: white;
     padding: 4pt;
     margin: 4pt;
-    border-radius: 4pt;	
+    border-radius: 4pt;
     display: flex;
     flex-direction: column;
 }
@@ -60,7 +60,7 @@ form {
     background-color: white;
     padding: 4pt;
     margin: 4pt;
-    border-radius: 4pt;	
+    border-radius: 4pt;
     display: flex;
     flex-direction: column;
 }
