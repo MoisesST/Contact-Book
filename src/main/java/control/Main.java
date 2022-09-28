@@ -7,3 +7,7 @@ public class Main {
     Routes.myRoutes();
   }
 }
+
+// Herança
+// Polimorfismo
+// Iterator
