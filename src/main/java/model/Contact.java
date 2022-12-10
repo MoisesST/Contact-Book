@@ -15,8 +15,17 @@ import javax.persistence.GenerationType;
 @Table(name = "contacts")
 public class Contact implements BaseEntity {
 
+  public Contact() {}
+
+  public Contact(String name, String phone, String email) {
+    this();
+    setName(name);
+    setPhone(phone);
+    setEmail(email);
+  }
+
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private int id;
 

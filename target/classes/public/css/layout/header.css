@@ -1,0 +1,8 @@
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 5px 20px #000;
+  background: #000;
+}

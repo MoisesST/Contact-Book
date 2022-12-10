@@ -1,103 +1,104 @@
 package controllers;
 
+import spark.*;
+import util.*;
 import java.util.HashMap;
-
 import model.Contact;
-import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
-
+import dao.ContactDAO;
 import dao.GenericDao;
 
 public class ContactController {
 
-  public static ModelAndView home(Request req, Response res) {
+  private static GenericDao<Contact> genericDao = null;
 
+  private static Log log = new Log();
+
+  public static ModelAndView pageHome(Request req, Response res) {
     HashMap<String, Object> model = new HashMap();
-
+    genericDao = new GenericDao<Contact>();
+    try {
+      model.put("contacts", genericDao.listAll(new Contact()));
+    } catch (Exception e) {
+      e.printStackTrace(); // or return an error page
+    }
     return new ModelAndView(model, "view/home.vm");
   }
 
-  public static ModelAndView listContacts(Request req, Response res) {
-
+  public static ModelAndView pageDetail(Request req, Response res) {
     HashMap<String, Object> model = new HashMap();
-
-    GenericDao<Contact> genericDao = new GenericDao<Contact>();
-
-    Contact contact = new Contact();
-
-    model.put("contacts", genericDao.listAll(contact));
-
-    return new ModelAndView(model, "view/contacts.vm");
-  }
-
-  public static ModelAndView getContactById(Request req, Response res) {
-
-    HashMap<String, Object> model = new HashMap();
-
-    GenericDao<Contact> genericDao = new GenericDao<Contact>();
-
-    Contact contact = new Contact();
-
-    int idreq = Integer.parseInt(req.params("id"));
-
+    ContactDAO contactDAO = new ContactDAO();
+    int id = Integer.parseInt(req.params("id"));
     try {
-
-      contact = genericDao.getObjectById(contact, idreq);
-
+      model.put("contact", contactDAO.getContactById(id));
     } catch (Exception e) {
-
-      System.out.println("deu craps da leitura do banco");
+      e.printStackTrace(); // or return an error page
     }
-    model.put("contact", contact);
-
     return new ModelAndView(model, "view/detail.vm");
   }
 
-  // public static ModelAndView pageNew(Request req, Response res) {
-
-  // HashMap<String, Object> model = new HashMap();
-
-  // return new ModelAndView(model, "view/new.vm");
-  // }
+  public static ModelAndView pageNew(Request req, Response res) {
+    HashMap<String, Object> model = new HashMap();
+    return new ModelAndView(model, "view/new.vm");
+  }
 
   public static Object createContact(Request req, Response res) {
-
-    String name = req.queryParams("name");
-    String phone = req.queryParams("phone");
-    String email = req.queryParams("email");
-
-    Contact contact = new Contact();
-
-    contact.setName(name);
-    contact.setPhone(phone);
-    contact.setEmail(email);
-
     GenericDao<Contact> dao = new GenericDao<Contact>();
-
     try {
-
-      dao.save(contact);
-
+      dao.save(new Contact(
+          req.queryParams("name"),
+          req.queryParams("phone"),
+          req.queryParams("email")));
     } catch (Exception e) {
-
-      System.out.println("deu craps na gravação do banco");
-
+      log.addErro("deu craps na gravação do banco");
+      log.showAllErrors();
       return ("Internal Server Craps");
     }
-
     res.redirect("/");
-
-    return "ok";
+    MessagesToUsers msg = MessagesToUsers.SUCCESS;
+    return msg.getMessage();
+    // return "ok";
   }
 
-  public static Object updateContact(Request req, Response res) {
+  // public static ModelAndView home(Request req, Response res) {
+  // HashMap<String, Object> model = new HashMap();
+  // return new ModelAndView(model, "view/home.vm");
+  // }
 
-    return "ok";
-  }
+  // não está funcionando
+  // public static ModelAndView pageDetail(Request req, Response res) {
+  // HashMap<String, Object> model = new HashMap();
+  // genericDao = new GenericDao<Contact>();
+  // int id = Integer.parseInt(req.params("id"));
+  // try {
+  // model.put("contact", genericDao.getObjectById(new Contact(), id));
+  // } catch (Exception e) {
+  // e.printStackTrace(); // or return an error page
+  // }
+  // return new ModelAndView(model, "view/detail.vm");
+  // }
 
-  public static Object deleteContact(Request req, Response res) {
+  // public static ModelAndView getContactById(Request req, Response res) {
+  // HashMap<String, Object> model = new HashMap();
+  // genericDao = new GenericDao<Contact>();
+  // Contact contact = new Contact();
+  // int idreq = Integer.parseInt(req.params("id"));
+  // try {
+  // contact = genericDao.getObjectById(contact, idreq);
+  // } catch (Exception e) {
+  // log.addErro("deu craps da leitura do banco");
+  // log.showAllErrors();
+  // }
+  // model.put("contact", contact);
+  // return new ModelAndView(model, "view/detail.vm");
+  // }
 
-    return "ok";
-  }
+  // public static Object updateContact(Request req, Response res) {
+
+  // return "ok";
+  // }
+
+  // public static Object deleteContact(Request req, Response res) {
+
+  // return "ok";
+  // }
 }

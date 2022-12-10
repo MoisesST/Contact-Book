@@ -1,4 +1,6 @@
-* {
+@import "./css/index.css";
+
+/* * {
 	font-family: sans-serif;
 	background-color: #e3e3e3;
 	color: #434343;
@@ -79,4 +81,4 @@ form > input {
 	color: #e3e3e3;
 	padding: 8pt;
 	border-radius: 8pt;
-}
+} */

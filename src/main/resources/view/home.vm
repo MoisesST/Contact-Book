@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Games</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="/global.css" />
+  </head>
+
+  <body>
+    <header class="header">
+
+
+      <img
+        class="logo"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlUejvn0t0S_gQCU6NWfO3V5lgIkrJ6Wp_Zg&usqp=CAU"
+        alt="logo"
+      />
+    </header>
+
+    <main class="main">
+      <div class="static-main-container">
+        <div class="title-container">
+            <h1 class="title">My contacts</h1>
+        </div>
+        <div class="new-contact-button-container">
+          <a href="/contacts/new" class="link-to-new-contact-page">
+            <button class="new-contact-btn">
+              <i class="add-player-icon fa-solid fa-user-plus"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      #foreach($contact in $contacts)
+        <div class="contact-container">
+          <img class="contact-avatar" src="https://iconape.com/wp-content/png_logo_vector/contact-2.png" alt="avatar">
+          <div class="contact-information-container">
+            <a href="/contact/$contact.getId()">
+              <p class="contact-name"><strong>Name: </strong>$contact.getName()</p>
+              <p class="contact-number"><strong>Phone: </strong>$contact.getPhone()</p>
+            </a>
+          </div>
+        </div>
+      #end
+    </main>
+
+    <script src="./assets/resources/js/index.js" type="module"></script>
+  </body>
+</html>
+

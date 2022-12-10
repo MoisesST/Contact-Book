@@ -1,0 +1,43 @@
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: #fff;
+  text-shadow: 1px 2px 2px #000;
+  background: #1a1a1a;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main";
+  grid-template-columns: auto;
+  grid-template-rows: 10vh auto 10vh;
+}
+
+.header {
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.5s;
+}

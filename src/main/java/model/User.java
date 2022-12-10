@@ -1,26 +1,10 @@
-package model;
+// package model;
 
-public class User extends Person {
+// import javax.persistence.Entity;
+// import javax.persistence.Table;
 
-  private String email, phone;
+// @Entity
+// @Table(name = "user")
+// public class User extends Person {
 
-  public User(String name) {
-    super(name);
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-}
+// }

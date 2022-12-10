@@ -55,16 +55,13 @@ public class GenericDao<T extends BaseEntity> {
   public T getObjectById(T obj, long id) {
     Class classe = obj.getClass();
     String className = classe.getSimpleName().toString();
-
     Transaction transaction = null;
     T retorno = null;
     try {
       Session session = HibernateUtil.getSessionFactory().openSession();
-
       transaction = session.beginTransaction();
       // get the studendt object
       retorno = (T) session.get(classe, id);
-
       transaction.commit();
     } catch (Exception e) {
       if (transaction != null) {
@@ -76,24 +73,16 @@ public class GenericDao<T extends BaseEntity> {
   }
 
   public List<T> listAll(T obj) {
-
     Class classe = obj.getClass();
-
     String className = classe.getSimpleName().toString();
-
     Transaction transaction = null;
-
     List<T> objects = null;
-
     try {
       Session session = HibernateUtil.getSessionFactory().openSession();
-
       transaction = session.beginTransaction();
       // get the studendts
       objects = session.createQuery("from " + className).list();
-
       transaction.commit();
-
     } catch (Exception e) {
       if (transaction != null) {
         transaction.rollback();

@@ -1,14 +1,10 @@
-package model;
+// package model;
 
-public class Administrator extends Person {
+// import javax.persistence.Entity;
+// import javax.persistence.Table;
 
-  private int id;
+// @Entity
+// @Table(name = "administrator")
+// public class Administrator extends Person {
 
-  public Administrator(String name) {
-    super(name);
-  }
-
-  public int getId() {
-    return id;
-  }
-}
+// }

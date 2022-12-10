@@ -1,0 +1,34 @@
+.contact-container {
+  width: 14rem;
+  height: 4rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0rem 0rem 0rem 0.2rem #fff, 0rem 0rem 1rem 0.5rem #000;
+  background: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-avatar,
+.contact-information-container {
+  margin-left: 0.4rem;
+}
+
+.contact-avatar {
+  width: 3.5rem;
+}
+
+.contact-information-container {
+  height: 2.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-name,
+.contact-number {
+  font-size: 0.7rem;
+}
