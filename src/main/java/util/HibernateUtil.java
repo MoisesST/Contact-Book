@@ -1,14 +1,12 @@
 package util;
 
 import java.util.Properties;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-
+import org.hibernate.cfg.*;
 import model.Contact;
+import model.User;
 
 public class HibernateUtil {
 
@@ -34,6 +32,7 @@ public class HibernateUtil {
 
         configuration.setProperties(settings);
         configuration.addAnnotatedClass(Contact.class);
+        configuration.addAnnotatedClass(User.class);
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
             .applySettings(configuration.getProperties()).build();

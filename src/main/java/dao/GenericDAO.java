@@ -5,11 +5,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.BaseEntity;
-
 import util.HibernateUtil;
 
-public class GenericDao<T extends BaseEntity> {
+public class GenericDAO<T> {
 
   public void save(T obj) {
 
@@ -80,7 +78,6 @@ public class GenericDao<T extends BaseEntity> {
     try {
       Session session = HibernateUtil.getSessionFactory().openSession();
       transaction = session.beginTransaction();
-      // get the studendts
       objects = session.createQuery("from " + className).list();
       transaction.commit();
     } catch (Exception e) {

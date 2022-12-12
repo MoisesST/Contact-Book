@@ -15,18 +15,35 @@
   </head>
   <body>
     <h1>Login</h1>
-    <form method="post" action="/users/login">
+    <form method="post" action="/contacts">
+      <label for="name">Name</label>
+      <br />
+      <input type="text" id="name" name="name" placeholder="Name" />
+      <br />
+
       <label for="email">Email</label>
       <br />
-      <input type="text" id="email" name="email" placeholder="Email" />
+      <input type="email" id="email" name="email" placeholder="Email" />
+      <br />
+
+      <label for="phone">Phone</label>
+      <br />
+      <input type="number" id="phone" name="phone" placeholder="Phone" />
       <br />
 
       <label for="password">Password</label>
       <br />
-      <input type="text" id="password" name="password" placeholder="Password" />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+      />
       <br />
 
-      <button>Login</button>
+      <button>
+        <i class="add-player-icon fa-solid fa-user-plus"></i>
+      </button>
     </form>
   </body>
 </html>
